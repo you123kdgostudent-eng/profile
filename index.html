@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <h1 class="logo">My site</h1>
+        <nav class="nav">
+          <ul class="nav-list">
+            <li class="nav-item"><a href="#about">私について</a></li>
+            <li class="nav-item"><a href="#portfolio">ポートフォリオ</a></li>
+            <li class="nav-item"><a href="#contact">お問い合わせ</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero-section">
+        <div class="container">
+          <div class="hero-content">
+            <h2 class="hero-title">
+              一緒にプログラミングに一歩踏み出しませんか
+            </h2>
+            <p class="hero-subtitle">
+              フロントエンドエンジニア / Webデザイナー
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="content-section">
+        <div class="container">
+          <h2 class="section-title">僕について</h2>
+          <div class="about-content">
+            <img
+              src="img/IMG_7746.JPG"
+              alt="自己紹介の写真"
+              class="profile-photo animate-on-scroll"
+            />
+            <div class="about-text animate-on-scroll">
+              <p>
+                こんにちは！丹野と申します。現在はプログラミングを中心に勉強している専門学生です。1年生です。みんなと一緒に学び合えたら嬉しいです！
+              </p>
+              <p>
+                趣味はゲームと筋トレです。ゲームは特にFPSが好きで、友達と一緒にプレイすることが多いです。筋トレは健康維持のために始めましたが、今では生活の一部になっています。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="portfolio" class="content-section">
+        <div class="container">
+          <h2 class="section-title">ポートフォリオ</h2>
+          <div class="card-container">
+            <div class="card portfolio-card animate-on-scroll">
+              <img
+                src="https://picsum.photos/400/300?random=4"
+                alt="作品1"
+                class="portfolio-image"
+              />
+              <div class="card-body">
+                <h3 class="card-title">〇〇コーポレートサイト</h3>
+                <p class="card-text">
+                  デザインからコーディングまで担当した企業サイトです。レスポンシブデザインに対応しています。
+                </p>
+              </div>
+            </div>
+            <div class="card portfolio-card animate-on-scroll">
+              <img
+                src="https://picsum.photos/400/300?random=5"
+                alt="作品2"
+                class="portfolio-image"
+              />
+              <div class="card-body">
+                <h3 class="card-title">〇〇ECサイト</h3>
+                <p class="card-text">
+                  ユーザーインターフェースを意識して設計しました。決済機能も実装しています。
+                </p>
+              </div>
+            </div>
+            <div class="card portfolio-card animate-on-scroll">
+              <img
+                src="https://picsum.photos/400/300?random=6"
+                alt="作品3"
+                class="portfolio-image"
+              />
+              <div class="card-body">
+                <h3 class="card-title">〇〇個人ブログ</h3>
+                <p class="card-text">
+                  WordPressをカスタマイズして制作したブログです。記事投稿が簡単にできます。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact-section">
+        <div class="container">
+          <h2 class="section-title">お問い合わせ</h2>
+          <div class="contact-content animate-on-scroll">
+            <p>
+              お仕事のご相談やご質問など、お気軽にご連絡ください。以下のフォームにご入力をお願いいたします。
+            </p>
+            <form
+              action="https://formspree.io/f/xvgblqjo"
+              method="POST"
+              class="contact-form"
+              autocomplete="off"
+            >
+              <div class="form-group">
+                <label for="name">お名前</label>
+                <input type="text" id="name" name="name" required />
+              </div>
+              <div class="form-group">
+                <label for="email">メールアドレス</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+              <div class="form-group">
+                <label for="message">お問い合わせ内容</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="submit-btn">送信</button>
+            </form>
+            <p class="contact-link-message">
+              または、直接メールでご連絡ください。
+            </p>
+            <a href="mailto:your-email@example.com" class="contact-link"
+              >your-email@example.com</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+              } else {
+                // オプション: 画面外に出たらアニメーションをリセットしたい場合はコメント解除
+                // entry.target.classList.remove('is-visible');
+              }
+            });
+          },
+          {
+            threshold: 0.2, // 要素が20%表示されたら発火
+          }
+        );
+
+        document.querySelectorAll(".animate-on-scroll").forEach((el) => {
+          observer.observe(el);
+        });
+      });
+    </script>
+
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2024 My Portfolio. All Rights Reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
