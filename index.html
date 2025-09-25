@@ -17,7 +17,7 @@
         <nav class="nav">
           <ul class="nav-list">
             <li class="nav-item"><a href="#about">私について</a></li>
-            <li class="nav-item"><a href="#portfolio">ポートフォリオ</a></li>
+            <li class="nav-item"><a href="#portfolio">趣味</a></li>
             <li class="nav-item"><a href="#contact">お問い合わせ</a></li>
           </ul>
         </nav>
@@ -61,44 +61,32 @@
 
       <section id="portfolio" class="content-section">
         <div class="container">
-          <h2 class="section-title">ポートフォリオ</h2>
+          <h2 class="section-title">趣味</h2>
           <div class="card-container">
             <div class="card portfolio-card animate-on-scroll">
-              <img
-                src="https://picsum.photos/400/300?random=4"
-                alt="作品1"
-                class="portfolio-image"
-              />
+              <img src="img/IMG_7821.JPG" alt="作品1" class="portfolio-image" />
               <div class="card-body">
-                <h3 class="card-title">〇〇コーポレートサイト</h3>
+                <h3 class="card-title">旅行</h3>
                 <p class="card-text">
-                  デザインからコーディングまで担当した企業サイトです。レスポンシブデザインに対応しています。
+                  色々な場所に行くのが好きです。景色や食べ物を堪能するのが好きです！
                 </p>
               </div>
             </div>
             <div class="card portfolio-card animate-on-scroll">
-              <img
-                src="https://picsum.photos/400/300?random=5"
-                alt="作品2"
-                class="portfolio-image"
-              />
+              <img src="img/IMG_7820.JPG" alt="作品2" class="portfolio-image" />
               <div class="card-body">
-                <h3 class="card-title">〇〇ECサイト</h3>
+                <h3 class="card-title">ラーメン巡り</h3>
                 <p class="card-text">
-                  ユーザーインターフェースを意識して設計しました。決済機能も実装しています。
+                  食べる事が一番好きです。特にラーメンが好きで、色々な店を巡っています！
                 </p>
               </div>
             </div>
             <div class="card portfolio-card animate-on-scroll">
-              <img
-                src="https://picsum.photos/400/300?random=6"
-                alt="作品3"
-                class="portfolio-image"
-              />
+              <img src="img/IMG_7822.JPG" alt="作品3" class="portfolio-image" />
               <div class="card-body">
-                <h3 class="card-title">〇〇個人ブログ</h3>
+                <h3 class="card-title">動物</h3>
                 <p class="card-text">
-                  WordPressをカスタマイズして制作したブログです。記事投稿が簡単にできます。
+                  特に猫が好きで猫カフェにもよく行きます。癒されます！
                 </p>
               </div>
             </div>
@@ -114,6 +102,7 @@
               お仕事のご相談やご質問など、お気軽にご連絡ください。以下のフォームにご入力をお願いいたします。
             </p>
             <form
+              id="contact-form"
               action="https://formspree.io/f/xvgblqjo"
               method="POST"
               class="contact-form"
@@ -170,6 +159,38 @@
         document.querySelectorAll(".animate-on-scroll").forEach((el) => {
           observer.observe(el);
         });
+
+        // ここから追加するコード
+        const contactForm = document.getElementById("contact-form");
+        if (contactForm) {
+          contactForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const formAction = e.target.action;
+
+            try {
+              const formData = new FormData(e.target);
+
+              const response = await fetch(formAction, {
+                method: "POST",
+                body: formData,
+                headers: {
+                  Accept: "application/json",
+                },
+              });
+
+              if (response.ok) {
+                e.target.reset();
+                alert("お問い合わせ内容が送信されました。");
+              } else {
+                alert("送信に失敗しました。もう一度お試しください。");
+              }
+            } catch (error) {
+              console.error("Error:", error);
+              alert("送信中にエラーが発生しました。");
+            }
+          });
+        }
       });
     </script>
 
